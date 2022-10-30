@@ -1,0 +1,126 @@
+*{
+    /* Default Values Start Here */
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--tertiary-color);
+    /* Default Values Ends Here */
+}
+/*---------------Root Starts Here------------------*/
+:root{
+    /* Variables Start Here */
+    --primary-color: #111;
+    --secondary-color: #202020;
+    --tertiary-color: #eee;
+    /* Variables Ends Here */
+
+}
+/*---------------Root Ends Here------------------*/
+
+/*---------------Body Starts Here------------------*/
+body{
+    position: relative;
+    background: var(--secondary-color);
+    /* background: linear-gradient(45deg,#44e88d,#2dded8);  */
+}
+/*---------------Body Ends Here------------------*/
+
+/*---------------Heading Starts Here------------------*/
+h1{
+    position: sticky;
+    top: 0;
+    padding: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 48px;
+    /* This is the trick to set gradient in text
+     *
+     * Start of trick
+     */
+    background: linear-gradient(45deg,#d61f4d,#f3ff22);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    /*
+     * End of trick
+     * text-shadow: 2px 2px 1px var(--primary-color);
+     * text-shadow property is not compatible with this trick :(
+     */
+    z-index: 1;
+}
+/*---------------Heading Ends Here------------------*/
+
+/*---------------Gradient Container starts Here------------------*/
+.gradients-container{
+    padding: 1rem;
+    width: 90vw;
+    margin: 0 auto;
+    max-width: 1170px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* Don't add this, this is dangerous and time taking to spot
+     * out... This stops the rows height at 0 after one row.
+     *
+     * grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+     * This does not work.
+     *
+     * Instead use this
+     * grid-auto-rows: 100px (or) auto;
+     */
+    grid-auto-rows: auto;
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 2rem;
+    align-items: center;
+}
+/*---------------Gradient Container ends Here------------------*/
+
+/*---------------Gradient Instance starts Here------------------*/
+.gradient{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1.5rem 2rem;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 2px 5px 10px 2px rgba(0, 0, 0, .7);
+}
+
+.gradient-color{
+    height: 3rem;
+    border-radius: 2.5px;
+}
+.code-container{
+    display: flex;
+    align-items: center;
+}
+.code-container > button, .code-container > button:focus{
+    border: none;
+    width: 24px;
+    height: 24px;
+    border: 0;
+    margin: 0;
+}
+input, input:focus{
+    width: 100%;
+    font-size: 1rem;
+    outline: none;
+    background-color: var(--primary-color);
+    overflow: scroll;
+}
+/*---------------Gradient Instance Ends Here------------------*/
+
+/*---------------Button Starts Here------------------*/
+button, button:focus{
+    outline: none;
+    border: 2px solid var(--tertiary-color);
+    border-radius: 5px;
+    background: var(--primary-color);
+    box-shadow: 2px 5px 10px 2px rgba(0, 0, 0, 1);
+    margin: 1rem auto;
+    display: block;
+}
+h3{
+    padding: .5rem 1rem;
+    margin: 0;
+}
+/*---------------Button Ends Here------------------*/
