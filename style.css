@@ -28,17 +28,26 @@ body{
 
 /*---------------Heading Starts Here------------------*/
 h1{
+    /* These lines helps the header to stick to the top
+    position: sticky;
+    top: 0;
+    */
     position: sticky;
     top: 0;
     padding: 1.5rem;
     text-align: center;
     font-weight: 700;
     font-size: 48px;
-    /* This is the trick to set gradient in text
+    background: var(--primary-color);
+    z-index: 1;
+    
+}
+em{
+   /* This is the trick to set gradient in text
      *
      * Start of trick
      */
-    background: linear-gradient(45deg,#d61f4d,#f3ff22);
+    background: /*linear-gradient(45deg,#d61f4d,#f3ff22)*/linear-gradient(30deg, #16963f, #228bf3);
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent;
     /*

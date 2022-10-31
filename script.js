@@ -128,7 +128,7 @@ class UI{
                     <div class="code-container">
                         <div>CSS: </div>
                         <!-- Used the size=1 in input in HTML and width to be 100% in CSS to get adaptive input box size -->
-                        <input size=1 id="code${i}" value="${gradientColorCode.CSScode}" disabled></input>
+                        <input size=1 id="code${i}" value="${gradientColorCode.CSScode}" readonly></input>
                         <button onclick="copy('#code${i}')"><img src="copy-icon.svg"></img></button>
                     </div>
                 </article>
@@ -154,6 +154,15 @@ class UI{
          * 
          * Do this
          <button onclick="copy('#code${i}')"><img src="copy-icon.svg"></img></button>
+         * 
+         * One more problem encountered using innerHTML tag in JS is that, i made
+         * input tag having `disabled` attribute which did not allowed me to copy
+         * the input tag's value,
+         <input size=1 id="code${i}" value="${gradientColorCode.CSScode}" disabled></input>
+         *
+         * Instead you should use `readonly` attribute to let JS copy the contents
+         * inside like this
+         <input size=1 id="code${i}" value="${gradientColorCode.CSScode}" readonly></input>
          */
         }
     }
@@ -167,6 +176,7 @@ function loadMore(){
 function copy(id){
     const inputData = document.querySelector(`${id}`);
 	inputData.select();
+    console.log(inputData);
 	document.execCommand("copy");
 	alert("Code Copied to Clipboard");
 }
@@ -175,8 +185,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ui.displayGradients(15);
 });
 
-// We need to add another div so that the sticky CSS header does not look like a floating
-// element due to the clever hack used for text gradient...
+/*
+ * We need to add another div so that the sticky CSS header does not look like a floating
+ * element due to the clever hack used for text gradient...
 var div = document.createElement('div');
 div.style.backgroundColor = `var(--primary-color)`;
 /*
@@ -197,7 +208,8 @@ div.style.width = ` ${header.offsetWidth.toString()} px`;
  * 
 div.style.height = header.offsetHeight "px";
 div.style.width = header.offsetWidth + 'px';
- */
+ *
+ /
 div.style.height = ` ${header.offsetHeight}px`;
 div.style.width = ` ${header.offsetWidth}px`;
 div.style.top = ` 0`;
@@ -205,3 +217,10 @@ div.style.left = ` 0`;
 div.style.position = ` fixed`;
 div.style.zIndex = ` 0`;
 body.appendChild(div);
+ *
+ *
+ * Turns out there is a simple work around this, just need a sub-tag to header file,
+ * like I used a <em> tag and added the background gradient trick to it, changed
+ * background of header and applied `z-index = 1` in the header's CSS and viola,
+ * the work is done.
+ */
